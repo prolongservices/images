@@ -9,21 +9,21 @@ sections:
   label: Authors
   create: all
   match: "**/*"
-  new_doc_ext: ".json"
+  new_doc_ext: json
 - type: directory
   path: site/content/categories
   label: Categories
   create: all
   match: "**/*"
-  new_doc_ext: ".json"
+  new_doc_ext: json
 - type: directory
   path: site/content/posts
   label: Posts
   create: all
   match: "**/*"
   new_doc_ext: mdx
-upload_dir: uploads
-public_path: "/uploads"
+upload_dir: site/content/posts/img
+public_path: "./img"
 front_matter_path: ''
 use_front_matter_path: false
 file_template: ":filename:"
