@@ -1,0 +1,22 @@
+{
+    "name": "Pawneshwer Gupta",
+    "title": "Developer",
+    "description": "Sed commodo, est quis maximus fermentum, massa ipsum euismod neque, in varius risus tellus quis lacus. Sed ac bibendum odio.",
+    "thumbnail": "pawneshwer.png",
+    "social": [
+      {
+        "name": "Instagram",
+        "url": "https://instagram.com/pawneshwer"
+      },
+      {
+        "name": "Twitter",
+        "url": "https://twitter.com/pawneshwer"
+      },
+      {
+        "name": "Website",
+        "url": "https://learnpainless.com"
+      }
+    ],
+    "skills": ["Flutter", "Laravel", "Kotlin"]
+  }
+  
