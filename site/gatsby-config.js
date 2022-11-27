@@ -4,35 +4,79 @@ module.exports = {
   },
   plugins: [
     {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `photos`,
+        path: `${__dirname}/content/posts/img`,
+      },
       resolve: '@elegantstack/gatsby-theme-flexiblog-science',
       options: {
         // Add theme options here. Check documentation for available options.
         siteUrl: process.env.URL || process.env.VERCEL_URL
       }
+    },
+    {
+      resolve: `gatsby-plugin-advanced-sitemap`,
+      options: {
+        query: `
+        {
+          allMdx {
+            edges {
+              node {
+                id
+                slug
+                frontmatter {
+                  thumbnail {
+                    absolutePath
+                  }
+                  date
+                }
+              }
+            }
+          }
+        }
+        `,
+        createLinkInHead: true,
+        mapping: {
+          allMdx: {
+            sitemap: `posts`,
+            serializer: (edges) => {
+              return edges.map(({ node }) => {
+                return {
+                  slug: node.slug,
+                  feature_image: node.frontmatter.thumbnail.absolutePath,
+                  published_at: node.frontmatter.date
+                }
+              })
+            }
+          },
+        }
+      }
     }
   ],
   siteMetadata: {
     //General Site Metadata
-    title: 'FlexiBlog Theme',
-    name: 'FlexiBlog',
-    description: 'My site description...',
-    address: 'New York, NY',
-    email: 'email@example.com',
-    phone: '+1 (888) 888-8888',
+    title: 'Download Latest Images',
+    name: 'Download Latest Images',
+    description: 'Download good morning image, good night images, love images, flower images, krishna images, nature images, happy birthday images',
+    address: 'India',
+    email: 'sales@prolongservices.com',
+    phone: '+91 9501784647',
+    siteUrl: `https://images.prolongservices.com`,
 
     //Site Social Media Links
     social: [
       {
         name: 'Github',
-        url: 'https://github.com/gatsbyjs'
+        url: 'https://github.com/prolongservices'
       },
       {
         name: 'Twitter',
-        url: 'https://twitter.com/gatsbyjs'
+        url: 'https://twitter.com/ProlongServices'
       },
       {
         name: 'Instagram',
-        url: 'https://github.com/gatsbyjs'
+        url: 'https://www.instagram.com/prolong.services/'
       }
     ],
 
