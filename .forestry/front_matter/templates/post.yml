@@ -20,3 +20,5 @@ fields:
 - type: file
   name: thumbnail
   label: thumbnail
+pages:
+- site/content/posts/10-most-beautiful-good-night-images-from-around-the-world.mdx
