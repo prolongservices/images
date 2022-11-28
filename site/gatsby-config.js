@@ -15,7 +15,7 @@ module.exports = {
         siteUrl: process.env.URL || process.env.VERCEL_URL
       }
     },
-    {
+    /* {
       resolve: `gatsby-plugin-advanced-sitemap`,
       options: {
         query: `
@@ -52,7 +52,7 @@ module.exports = {
           },
         }
       }
-    }
+    } */
   ],
   siteMetadata: {
     //General Site Metadata
