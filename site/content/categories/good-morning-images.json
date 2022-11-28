@@ -1,6 +1,7 @@
 {
   "name": "Good Morning Images",
-  "icon": "good-morning-image.svg",
+  "icon": "good-morning-images.svg",
   "color": "#c6f6d5",
-  "description": "Most Beautiful Good morning Images From Around The World"
+  "description": "Most Beautiful Good morning Images From Around The World",
+  "title": "Good Morning Images"
 }
