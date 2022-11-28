@@ -18,7 +18,7 @@ export const FooterLogo = () => (
   <>
     
     <Box sx={styles.copyright}>
-      Learn Pain Less © {new Date().getFullYear()}, All Rights Reserved.
+      Prolong Services © {new Date().getFullYear()}, All Rights Reserved.
     </Box>
     <Box>
       <PoweredByGatsby />
