@@ -15,30 +15,29 @@ module.exports = {
         siteUrl: process.env.URL || process.env.VERCEL_URL
       }
     },
+    //`gatsby-plugin-sitemap`,
+    //`gatsby-image-sitemap`,
     /* {
       resolve: `gatsby-plugin-advanced-sitemap`,
       options: {
         query: `
         {
-          allMdx {
+          allArticle {
             edges {
               node {
                 id
                 slug
-                frontmatter {
-                  thumbnail {
-                    absolutePath
-                  }
-                  date
-                }
+                date
+                
               }
             }
           }
         }
         `,
         createLinkInHead: true,
+        addUncaughtPages: true,
         mapping: {
-          allMdx: {
+          allArticle: {
             sitemap: `posts`,
             serializer: (edges) => {
               return edges.map(({ node }) => {
@@ -49,6 +48,7 @@ module.exports = {
                 }
               })
             }
+            
           },
         }
       }
