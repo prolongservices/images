@@ -42,7 +42,7 @@ exports.onPostBuild = async ({ graphql, pathPrefix }, pluginOptions) => {
         const filePath = path + (path.indexOf(".html") === -1 ? "index.html" : "");
 
         const fileContent = fs.readFileSync(`${options.buildDir}${filePath}`).toString("utf8");
-        const pageDOM = cheerio.load(fileContent, {
+        const $ = cheerio.load(fileContent, {
             // use xmlMode to read the content in <noscript> tags
             // otherwise you cannot access them
             xmlMode: true,
@@ -54,9 +54,9 @@ exports.onPostBuild = async ({ graphql, pathPrefix }, pluginOptions) => {
         // we have to find the parent (e.g. .gatsby-image-wrapper), 
         // so we can extract the alt from <img /> and all resolution
         // links from the <source /> tag 
-        pageDOM(options.gatsbyImageSelector).each(function() {
+        $(options.gatsbyImageSelector).each((i, element) => {
             
-            const el = pageDOM(this);
+            const el = $(element);
             const img = el.find("picture").find("img");
             const alt = img.attr("alt");
             const src = img.attr("src");

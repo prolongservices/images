@@ -9,6 +9,9 @@ module.exports = {
         name: `photos`,
         path: `${__dirname}/content/posts/img`,
       },
+    },
+    {
+      
       resolve: '@elegantstack/gatsby-theme-flexiblog-science',
       options: {
         // Add theme options here. Check documentation for available options.
@@ -17,6 +20,20 @@ module.exports = {
     },
     //`gatsby-plugin-sitemap`,
     //`gatsby-image-sitemap`,
+    {
+      resolve: `gatsby-plugin-google-gtag`,
+      options: {
+        trackingIds: [
+          "G-ELT02ND9SJ"
+        ],
+        pluginConfig: {
+          head: true,
+        },
+        gtagConfig: {
+          send_page_view: true, // Explicitly set to true
+        },
+      }
+    },
     /* {
       resolve: `gatsby-plugin-advanced-sitemap`,
       options: {
