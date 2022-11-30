@@ -15,6 +15,20 @@ module.exports = {
         siteUrl: process.env.URL || process.env.VERCEL_URL
       }
     },
+    {
+      resolve: `gatsby-plugin-google-gtag`,
+      options: {
+        trackingIds: [
+          "G-ELT02ND9SJ"
+        ],
+        pluginConfig: {
+          head: true,
+        },
+        gtagConfig: {
+          send_page_view: true, // Explicitly set to true
+        },
+      }
+    },
     /* {
       resolve: `gatsby-plugin-advanced-sitemap`,
       options: {
