@@ -7923,6 +7923,11 @@ gatsby-plugin-catch-links@^4.14.0:
     "@babel/runtime" "^7.15.4"
     escape-string-regexp "^1.0.5"
 
+gatsby-plugin-complex-sitemap-tree@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-complex-sitemap-tree/-/gatsby-plugin-complex-sitemap-tree-1.0.2.tgz#daac02391d7c47eab1b1384fa7815e003021f814"
+  integrity sha512-puo7KmOLfwOYekV+sersB6fv1WRZh19k7TGjZrJddh3oIK3g50lSn6u+SirlMgPCFGCdjs3iMubJ12EGy4fN3Q==
+
 gatsby-plugin-disqus@^1.2.4:
   version "1.2.4"
   resolved "https://registry.npmjs.org/gatsby-plugin-disqus/-/gatsby-plugin-disqus-1.2.4.tgz"

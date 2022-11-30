@@ -1,5 +1,5 @@
 const cheerio = require("cheerio");
-const sm = require("sitemap");
+const { simpleSitemapAndIndex } = require('sitemap')
 const fs = require("fs");
 const defaultOptions = require('./default-options');
 
@@ -54,20 +54,22 @@ exports.onPostBuild = async ({ graphql, pathPrefix }, pluginOptions) => {
         // we have to find the parent (e.g. .gatsby-image-wrapper), 
         // so we can extract the alt from <img /> and all resolution
         // links from the <source /> tag 
+        //console.log(fileContent)
         $(options.gatsbyImageSelector).each((i, element) => {
-            
+            //console.log(element)
+            //return
             const el = $(element);
-            const img = el.find("picture").find("img");
+            const img = el.find("img");
             const alt = img.attr("alt");
             const src = img.attr("src");
-
+            //console.log(img)
             if (options.ignoreImagesWithoutAlt && !alt) {
                 return;
             }
                 
             pageImages[src] = alt;
         });
-        console.log(pageImages)
+        //console.log(pageImages)
         const pageImagesKeys = Object.keys(pageImages);
         if (pageImagesKeys.length === 0) {
             return;
@@ -83,16 +85,17 @@ exports.onPostBuild = async ({ graphql, pathPrefix }, pluginOptions) => {
                     title: pageImages[image],
                 };
             }),
+            changefreq: '',
+            priority: 0.7
         });
     });
 
     console.log(`Creating sitemap for ${imagesCount} images.`);
 
-    const sitemap = sm.createSitemap({
-        urls: urlData,
-    });
-
-    fs.writeFileSync(`${options.buildDir}/${options.sitemapPath}`, sitemap.toString());
-
-    console.log(`Image sitemap successfully written to ${options.buildDir}/${options.sitemapPath}`);
+    await simpleSitemapAndIndex({
+        hostname: siteUrl,
+        destinationDir: options.buildDir,
+        sourceData: urlData,
+        gzip: false
+    })
 };

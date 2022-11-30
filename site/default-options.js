@@ -4,14 +4,15 @@ module.exports = {
     excludePaths: [],
 
     // generated image sitemap filename
-    sitemapPath: "image-sitemap.xml",
+    sitemapPath: "sitemap-index.xml",
 
     // do not change, unless you've done modification to your gatsby-image classes
-    gatsbyImageSelector: ".gatsby-image-wrapper",
+    //gatsbyImageSelector: ".gatsby-image-wrapper",
+    gatsbyImageSelector: "figure",
 
     // build dir to read the output files from
     // also to write the sitemap to
-    buildDir: './public',
+    buildDir: './public/sitemap',
 
     // don't add images with missing alt tag to sitemap
     ignoreImagesWithoutAlt: true,
