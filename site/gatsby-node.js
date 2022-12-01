@@ -2,6 +2,7 @@ const cheerio = require("cheerio");
 const { simpleSitemapAndIndex } = require('sitemap')
 const fs = require("fs");
 const defaultOptions = require('./default-options');
+const path = require('path')
 
 exports.onPostBuild = async ({ graphql, pathPrefix }, pluginOptions) => {
     const options = {
@@ -85,16 +86,19 @@ exports.onPostBuild = async ({ graphql, pathPrefix }, pluginOptions) => {
                     title: pageImages[image],
                 };
             }),
-            changefreq: '',
+            changefreq: 'daily',
             priority: 0.7
         });
     });
 
     console.log(`Creating sitemap for ${imagesCount} images.`);
+    const sitemapWritePath = path.join(`public`, options.output)
+    const sitemapPublicPath = path.posix.join(pathPrefix, options.output)
 
     await simpleSitemapAndIndex({
         hostname: siteUrl,
-        destinationDir: options.buildDir,
+        publicBasePath: sitemapPublicPath,
+        destinationDir: sitemapWritePath,
         sourceData: urlData,
         gzip: false
     })

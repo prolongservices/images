@@ -8,7 +8,7 @@ const posix = require('path')
 const withPrefixNew = withAssetPrefix || withPrefix
 
 exports.onRenderBody = async ({ graphql, setHeadComponents }, pluginOptions) => {
-    let { createLinkInHead } = { ...defaultOptions, ...pluginOptions };
+    let { createLinkInHead, output } = { ...defaultOptions, ...pluginOptions };
 
     if (!createLinkInHead) {
         return;
@@ -19,7 +19,7 @@ exports.onRenderBody = async ({ graphql, setHeadComponents }, pluginOptions) => 
             key: "gatsby-plugin-sitemap",
             rel: "sitemap",
             type: "application/xml",
-            href: withPrefixNew(posix.join(output, `/sitemap-index.xml`)),
+            href: withPrefixNew(posix.join(output, `sitemap-index.xml`)),
         }),
     ]);
 };

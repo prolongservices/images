@@ -12,7 +12,9 @@ module.exports = {
 
     // build dir to read the output files from
     // also to write the sitemap to
-    buildDir: './public/sitemap',
+    buildDir: './public',
+
+    output: 'sitemap',
 
     // don't add images with missing alt tag to sitemap
     ignoreImagesWithoutAlt: true,
