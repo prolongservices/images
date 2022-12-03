@@ -103,12 +103,12 @@ module.exports = {
   siteMetadata: {
     //General Site Metadata
     title: 'Download Latest Images',
-    name: 'Download Latest Images',
+    name: 'Images Le',
     description: 'Download good morning image, good night images, love images, flower images, krishna images, nature images, happy birthday images',
     address: 'India',
-    email: 'sales@prolongservices.com',
+    email: 'hello@imagesle.com',
     phone: '+91 9501784647',
-    siteUrl: `https://images.prolongservices.com`,
+    siteUrl: `https://imagesle.com`,
 
     //Site Social Media Links
     social: [
@@ -122,7 +122,7 @@ module.exports = {
       },
       {
         name: 'Instagram',
-        url: 'https://www.instagram.com/prolong.services/'
+        url: 'https://www.instagram.com/images_le/'
       }
     ],
 
