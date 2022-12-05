@@ -3,19 +3,43 @@ module.exports = {
     DEV_SSR: false
   },
   plugins: [
-    
+    {
+      resolve: 'gatsby-plugin-algolia',
+      options: {
+        appId: process.env.GATSBY_ALGOLIA_APP_ID,
+        apiKey: process.env.ALGOLIA_ADMIN_KEY,
+        chunkSize: 10000,
+        queries: require('@elegantstack/gatsby-blog-algolia/src/queries')
+      }
+    },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `photos`,
         path: `${__dirname}/content/posts/img`,
+        services: {
+          algolia: true
+        }
       },
+    },
+    {
+      resolve: 'gatsby-plugin-manifest',
+      options: {
+        name: 'Images Le',
+        short_name: 'Images Le',
+        start_url: '/',
+        background_color: '#ffffff',
+        theme_color: '#5a67d8',
+        display: 'standalone',
+        icon: 'content/assets/favicon.png'
+      }
     },
     {
       
       resolve: '@elegantstack/gatsby-theme-flexiblog-science',
       options: {
         // Add theme options here. Check documentation for available options.
+        //siteUrl: process.env.URL || process.env.VERCEL_URL
         siteUrl: 'https://imagesle.com'
       }
     },
