@@ -48,11 +48,13 @@ const Seo = ({
     { property: 'og:site_name', content: site.name },
     { property: 'og:image', content: imageUrl },
 
-    { name: 'twitter:card', content: 'summary' },
+    { name: 'twitter:card', content: 'summary_large_image' },
     { name: 'twitter:site', content: site.name },
     { name: 'twitter:title', content: title },
     { name: 'twitter:description', content: description },
-    { name: 'twitter:creator', content: twitter.url }
+    { name: 'twitter:creator', content: twitter.url },
+    { name: 'twitter:image', content: imageUrl }
+
   ]
 
   if (keywords && keywords.length > 0) {

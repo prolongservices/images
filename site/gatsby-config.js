@@ -16,7 +16,7 @@ module.exports = {
       resolve: '@elegantstack/gatsby-theme-flexiblog-science',
       options: {
         // Add theme options here. Check documentation for available options.
-        siteUrl: process.env.URL || process.env.VERCEL_URL
+        siteUrl: 'https://imagesle.com'
       }
     },
     /* {
@@ -108,7 +108,7 @@ module.exports = {
     address: 'India',
     email: 'hello@imagesle.com',
     phone: '+91 9501784647',
-    siteUrl: `https://imagesle.com`,
+    siteUrl: 'https://imagesle.com',
 
     //Site Social Media Links
     social: [
