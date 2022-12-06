@@ -6,8 +6,8 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-algolia',
       options: {
-        appId: process.env.GATSBY_ALGOLIA_APP_ID,
-        apiKey: process.env.ALGOLIA_ADMIN_KEY,
+        appId: 'N8XPXSS3QO',
+        apiKey: 'b9804d4c7ed7e2c1291769040e6ee5d5',
         chunkSize: 10000,
         queries: require('@elegantstack/gatsby-blog-algolia/src/queries')
       }
