@@ -100,6 +100,7 @@ exports.onPostBuild = async ({ graphql, pathPrefix }, pluginOptions) => {
         publicBasePath: sitemapPublicPath,
         destinationDir: sitemapWritePath,
         sourceData: urlData,
-        gzip: false
+        gzip: false,
+        
     })
 };

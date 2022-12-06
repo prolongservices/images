@@ -46,36 +46,7 @@ module.exports = {
 
       }
     },
-    /* {
-      resolve : "gatsby-plugin-complex-sitemap-tree",
-      options: {
-        query: `
-          allArticle {
-            edges {
-              node {
-                id
-                slug
-                date
-                
-              }
-            }
-          }
-        `,
-        sitemapTree : {
-          fileName: "sitemap.xml",
-          children: [
-            {
-              fileName: "sitemap-articles.xml",
-              queryName: "allArticle",
-              serializer: (edge) => ({loc : edge.slug, lastmod : edge.date})
-            },
-            
-          ],
-        },
-      },
-    }, */
-    //`gatsby-plugin-sitemap`,
-    //`gatsby-image-sitemap`,
+    
     {
       resolve: `gatsby-plugin-google-gtag`,
       options: {
@@ -90,42 +61,23 @@ module.exports = {
         },
       }
     },
-    /* {
-      resolve: `gatsby-plugin-advanced-sitemap`,
+    {
+      resolve: "gatsby-plugin-sitemap",
       options: {
         query: `
         {
-          allArticle {
-            edges {
-              node {
-                id
-                slug
-                date
-                
-              }
+          allSitePage {
+            nodes {
+              path
             }
           }
         }
         `,
-        createLinkInHead: true,
-        addUncaughtPages: true,
-        mapping: {
-          allArticle: {
-            sitemap: `posts`,
-            serializer: (edges) => {
-              return edges.map(({ node }) => {
-                return {
-                  slug: node.slug,
-                  feature_image: node.frontmatter.thumbnail.absolutePath,
-                  published_at: node.frontmatter.date
-                }
-              })
-            }
-            
-          },
-        }
+        output: '/',
+        resolveSiteUrl: () => 'https://imagesle.com'
       }
-    } */
+    }
+    
   ],
   siteMetadata: {
     //General Site Metadata
