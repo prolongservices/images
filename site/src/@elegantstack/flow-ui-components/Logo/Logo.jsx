@@ -28,6 +28,7 @@ const Logo = ({ title, grayscale, image, to, ...props }) => (
     sx={styles.title}
     {...props}
   >
+    <h1 className={'hidden-heading'}>{ title }</h1>
     {image ? (
       <img
         src={image}

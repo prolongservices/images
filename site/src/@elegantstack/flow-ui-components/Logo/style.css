@@ -2,3 +2,6 @@
 .logo {
     width: 90%;
 }
+.hidden-heading {
+    display: none;
+}
