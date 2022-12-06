@@ -17,9 +17,7 @@ module.exports = {
       options: {
         name: `photos`,
         path: `${__dirname}/content/posts/img`,
-        services: {
-          algolia: true
-        }
+       
       },
     },
     {
@@ -40,7 +38,12 @@ module.exports = {
       options: {
         // Add theme options here. Check documentation for available options.
         //siteUrl: process.env.URL || process.env.VERCEL_URL
-        siteUrl: 'https://imagesle.com'
+        siteUrl: 'https://imagesle.com',
+
+        services: {
+          algolia: true
+        }
+
       }
     },
     /* {
