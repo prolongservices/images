@@ -13,11 +13,8 @@ export default function HTML(props) {
         name="viewport"
         content="width=device-width, initial-scale=1, shrink-to-fit=no"
       />
-      {/*<script async
-              src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7943122633795545"
-              crossOrigin="anonymous"/>*/}
+      
       {props.headComponents}
-      <link rel={"stylesheet"} href={'/aab/app.css'}/>
     </head>
     <body {...props.bodyAttributes}>
     {props.preBodyComponents}
@@ -29,10 +26,7 @@ export default function HTML(props) {
     {props.postBodyComponents}
     <div id="url">{url}</div>
     <script type='text/javascript' src='https://platform-api.sharethis.com/js/sharethis.js#property=6390e2894c319700156560d0&product=inline-share-buttons' async='async'></script>
-    {/*<script data-ad-client="ca-pub-7943122633795545" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>*/}
-    {/* <script async defer crossOrigin={"anonymous"} src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v7.0&appId=245392315801658&autoLogAppEvents=1" nonce="9RXWqeSW"></script>
-        <script async defer src="https://platform.twitter.com/widgets.js" charSet={"utf-8"}></script>
-        <script async defer src="https://apis.google.com/js/platform.js"></script> */}
+    
     </body>
     </html>
   )

@@ -4,6 +4,7 @@ import { helmetJsonLdProp } from 'react-schemaorg'
 import { getSrc } from 'gatsby-plugin-image'
 import useSiteMetadata from '@helpers-blog/useSiteMetadata'
 import getImageVariant from '@components/utils/getImageVariant'
+import { useStaticQuery, graphql } from 'gatsby'
 
 const Seo = ({
   title,
@@ -21,18 +22,28 @@ const Seo = ({
   locale
 }) => {
   const site = useSiteMetadata()
-
+  const { logo } = useStaticQuery(logoQuery)
   const social = (author && author.social) || site.social || []
   const twitter =
     social.find(s => s.name && s.name.toLowerCase() === 'twitter') || {}
 
   description = excerpt || description || site.description
 
-  const imageSrc = getSrc(getImageVariant(thumbnail, 'hero'))
-  const imageUrl =
-    imageSrc &&
-    (imageSrc.startsWith('//') ? imageSrc : siteUrl && `${siteUrl}${imageSrc}`)
+  //console.log('pawn from SEO clone')
 
+  let imageUrl;
+  if (thumbnail == null) {
+    
+    imageUrl = logo.nodes[0].publicURL
+  } else {
+    const imageSrc = getSrc(getImageVariant(thumbnail, 'hero'))
+    imageUrl =
+      imageSrc &&
+      (imageSrc.startsWith('//') ? imageSrc : siteUrl && `${siteUrl}${imageSrc}`)
+  }
+
+
+  //console.log(imageUrl)
   /**
    * Meta Tags
    */
@@ -48,11 +59,13 @@ const Seo = ({
     { property: 'og:site_name', content: site.name },
     { property: 'og:image', content: imageUrl },
 
-    { name: 'twitter:card', content: 'summary' },
+    { name: 'twitter:card', content: 'summary_large_image' },
     { name: 'twitter:site', content: site.name },
     { name: 'twitter:title', content: title },
     { name: 'twitter:description', content: description },
-    { name: 'twitter:creator', content: twitter.url }
+    { name: 'twitter:creator', content: twitter.url },
+    { name: 'twitter:image', content: imageUrl }
+
   ]
 
   if (keywords && keywords.length > 0) {
@@ -137,3 +150,13 @@ const Seo = ({
 }
 
 export default Seo
+
+const logoQuery = graphql`
+  query LogoQuery2 {
+    logo: allFile(filter: {name: {eq: "logo"}}) {
+      nodes {
+        publicURL
+      }
+    }
+  }
+`
