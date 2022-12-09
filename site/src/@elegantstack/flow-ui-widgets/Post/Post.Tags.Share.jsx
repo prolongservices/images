@@ -7,6 +7,7 @@ export const PostTagsShare = props => (
   <Box>
     <Divider />
     <PostTags {...props} />
+    <Divider />
     {/* <PostShare {...props} /> */}
     <div class="sharethis-inline-share-buttons"></div>
   </Box>
