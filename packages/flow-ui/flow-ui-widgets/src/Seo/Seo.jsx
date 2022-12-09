@@ -1,9 +1,10 @@
 import React from 'react'
 import Helmet from 'react-helmet'
 import { helmetJsonLdProp } from 'react-schemaorg'
-import { getSrc } from 'gatsby-plugin-image'
+import { getSrc, getImage } from 'gatsby-plugin-image'
 import useSiteMetadata from '@helpers-blog/useSiteMetadata'
 import getImageVariant from '@components/utils/getImageVariant'
+import { useStaticQuery, graphql } from 'gatsby'
 
 const Seo = ({
   title,
@@ -28,11 +29,19 @@ const Seo = ({
 
   description = excerpt || description || site.description
 
-  const imageSrc = getSrc(getImageVariant(thumbnail, 'hero'))
-  const imageUrl =
-    imageSrc &&
-    (imageSrc.startsWith('//') ? imageSrc : siteUrl && `${siteUrl}${imageSrc}`)
+  let imageUrl;
+  if (thumbnail == null) {
+    const { logo } = useStaticQuery(logoQuery)
+    imageUrl = logo.nodes[0].publicURL
+  } else {
+    const imageSrc = getSrc(getImageVariant(thumbnail, 'hero'))
+    imageUrl =
+      imageSrc &&
+      (imageSrc.startsWith('//') ? imageSrc : siteUrl && `${siteUrl}${imageSrc}`)
+  }
 
+
+  //console.log(imageUrl)
   /**
    * Meta Tags
    */
@@ -139,3 +148,13 @@ const Seo = ({
 }
 
 export default Seo
+
+const logoQuery = graphql`
+  query LogoQuery2 {
+    logo: allFile(filter: {name: {eq: "logo"}}) {
+      nodes {
+        publicURL
+      }
+    }
+  }
+`
