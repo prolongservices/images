@@ -26,7 +26,7 @@ const Seo = ({
   const social = (author && author.social) || site.social || []
   const twitter =
     social.find(s => s.name && s.name.toLowerCase() === 'twitter') || {}
-
+  console.log(description)
   description = excerpt || description || site.description
 
   //console.log('pawn from SEO clone')

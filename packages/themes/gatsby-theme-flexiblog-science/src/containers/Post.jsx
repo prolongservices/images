@@ -22,6 +22,7 @@ const Post = ({
   data: { post, tagCategoryPosts, tagPosts, categoryPosts, previous, next },
   ...props
 }) => {
+  console.log(post)
   const relatedPosts = [
     ...(tagCategoryPosts ? tagCategoryPosts.nodes : []),
     ...(tagPosts ? tagPosts.nodes : []),

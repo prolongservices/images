@@ -1,3 +1,4 @@
+const urljoin = require('url-join')
 module.exports = {
   flags: {
     DEV_SSR: false
@@ -41,7 +42,8 @@ module.exports = {
         siteUrl: 'https://imagesle.com',
 
         services: {
-          algolia: true
+          algolia: true,
+          facebookComment: true
         }
 
       }
@@ -59,6 +61,63 @@ module.exports = {
         gtagConfig: {
           send_page_view: true, // Explicitly set to true
         },
+      }
+    },
+    {
+      resolve: 'gatsby-plugin-feed-generator',
+      options: {
+        generator: `GatsbyJS`,
+        rss: true, // Set to true to enable rss generation
+        json: true, // Set to true to enable json feed generation
+        siteQuery: `
+          {
+            site {
+              siteMetadata {
+                title
+                description
+                siteUrl
+                author
+              }
+            }
+          }
+        `,
+        feeds: [
+          {
+            name: 'rss',
+            query: `
+            {
+              allMdx(
+                sort: {order: DESC, fields: [frontmatter___date]},
+                limit: 100,
+                ) {
+                edges {
+                  node {
+                    excerpt
+                    html
+                    slug
+                    frontmatter {
+                      date
+                      title
+                      description
+                    }
+                  }
+                }
+              }
+            }
+            `,
+            normalize: ({ query: { site, allMdx } }) => {
+              return allMdx.edges.map(edge => {
+                return {
+                  title: edge.node.frontmatter.title,
+                  date: edge.node.frontmatter.date,
+                  url: urljoin(site.siteMetadata.siteUrl, edge.node.slug),
+                  html: edge.node.html,
+                  description: edge.node.frontmatter.description ? edge.node.frontmatter.description : edge.node.excerpt
+                }
+              })
+            },
+          },
+        ],
       }
     },
     {
@@ -88,6 +147,7 @@ module.exports = {
     email: 'hello@imagesle.com',
     phone: '+91 9501784647',
     siteUrl: 'https://imagesle.com',
+    author: 'Pawneshwer Gupta',
 
     //Site Social Media Links
     social: [
