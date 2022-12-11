@@ -4,7 +4,7 @@ hide_body: false
 fields:
 - type: text
   name: title
-  label: title
+  label: Title
 - type: text
   name: category
   label: category
@@ -20,6 +20,17 @@ fields:
 - type: file
   name: thumbnail
   label: thumbnail
+- name: description
+  type: textarea
+  default: ''
+  config:
+    required: true
+    wysiwyg: false
+    schema:
+      format: markdown
+    min: 30
+    max: 160
+  label: Description
 pages:
 - site/content/posts/10-most-beautiful-good-night-images-from-around-the-world.mdx
 - site/content/posts/15-best-good-night-images-to-wish-team-and-colleagues.mdx
