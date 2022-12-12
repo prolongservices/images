@@ -11,9 +11,9 @@ fields:
   default: now
 - name: category
   type: select
-  default: []
+  default: Uncategorized
   config:
-    required: false
+    required: true
     options:
     - Background Image
     - Flower Images
@@ -22,6 +22,7 @@ fields:
     - Happy Birthday Images
     - Krishna Images
     - Love Images
+    - Uncategorized
     source:
       type: simple
       section: ''
@@ -33,15 +34,20 @@ fields:
   default: []
   label: Tags
 - name: author
-  type: list
+  type: select
+  default: Pawneshwer Gupta
   config:
-    use_select: true
-    min: 
-    max: 
-    source:
-      type: simple
+    required: true
     options:
     - Pawneshwer Gupta
+    - Prolong Services
+    - Learn Pain Less
+    - Images Le
+    source:
+      type: simple
+      section: 
+      file: 
+      path: 
   label: Author
 - name: seo
   type: field_group
