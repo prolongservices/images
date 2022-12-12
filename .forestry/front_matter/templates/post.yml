@@ -7,19 +7,19 @@ fields:
   label: Title
 - type: text
   name: category
-  label: category
+  label: Category
 - type: text
   name: author
-  label: author
+  label: Author
 - type: list
   name: tags
-  label: tags
+  label: Tags
 - type: datetime
   name: date
-  label: date
+  label: Date
 - type: file
   name: thumbnail
-  label: thumbnail
+  label: Thumbnail
 - name: description
   type: textarea
   default: ''
