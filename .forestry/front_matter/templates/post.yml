@@ -25,6 +25,8 @@ fields:
     max: 
     source:
       type: simple
+    options:
+    - Pawneshwer Gupta
   label: Author
 - name: seo
   type: field_group
