@@ -26,5 +26,16 @@ export const query = graphql`
       name
       slug
     }
+    seo {
+      slug
+      facebook {
+        title
+        description
+      }
+      twitter {
+        title
+        description
+      }
+    }
   }
 `

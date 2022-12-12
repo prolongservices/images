@@ -17,5 +17,16 @@ export const query = graphql`
     author {
       ...ArticleAuthor
     }
+    seo {
+      slug
+      facebook {
+        title
+        description
+      }
+      twitter {
+        title
+        description
+      }
+    }
   }
 `

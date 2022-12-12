@@ -28,6 +28,21 @@ module.exports = async (
             tags {
               id
             }
+            seo {
+              slug
+              facebook {
+                title
+                description
+                thumbnail {
+                }
+              }
+              twitter {
+                title
+                description
+                thumbnail {
+                }
+              }
+            }
           }
         }
       }

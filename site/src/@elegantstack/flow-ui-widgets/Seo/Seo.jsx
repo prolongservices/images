@@ -19,25 +19,49 @@ const Seo = ({
   children,
   thumbnail,
   siteUrl,
-  locale
+  locale,
+  seo
 }) => {
   const site = useSiteMetadata()
   const { logo } = useStaticQuery(logoQuery)
   const social = (author && author.social) || site.social || []
   const twitter =
     social.find(s => s.name && s.name.toLowerCase() === 'twitter') || {}
-  console.log(description)
-  description = excerpt || description || site.description
+  //console.log(description)
+  description = (seo && seo.description) || excerpt || site.description
+  const facebookMeta = (seo && seo.facebook)
+  const twitterMeta = (seo && seo.twitter)
+  const metaTitle = (seo && seo.title) || title
+  const facebookThumbnail = (seo && seo.facebook && seo.facebook.thumbnail)
+  const twitterThumbnail = (seo && seo.twitter && seo.twitter.thumbnail)
 
   //console.log('pawn from SEO clone')
 
-  let imageUrl;
+  let imageUrl, facebookUrl, twitterUrl;
   if (thumbnail == null) {
-    
     imageUrl = logo.nodes[0].publicURL
   } else {
     const imageSrc = getSrc(getImageVariant(thumbnail, 'hero'))
     imageUrl =
+      imageSrc &&
+      (imageSrc.startsWith('//') ? imageSrc : siteUrl && `${siteUrl}${imageSrc}`)
+  }
+
+  if (facebookThumbnail == null) {
+    facebookUrl = logo.nodes[0].publicURL
+  }
+  else {
+    const imageSrc = getSrc(getImageVariant(facebookThumbnail, 'hero'))
+    facebookUrl =
+      imageSrc &&
+      (imageSrc.startsWith('//') ? imageSrc : siteUrl && `${siteUrl}${imageSrc}`)
+  }
+  if (twitterThumbnail == null) {
+    twitterUrl = logo.nodes[0].publicURL
+  }
+  else {
+    const imageSrc = getSrc(getImageVariant(twitterThumbnail, 'hero'))
+    twitterUrl =
       imageSrc &&
       (imageSrc.startsWith('//') ? imageSrc : siteUrl && `${siteUrl}${imageSrc}`)
   }
@@ -49,22 +73,22 @@ const Seo = ({
    */
 
   const metaTags = [
-    { itemprop: 'name', content: title || site.title },
+    { itemprop: 'name', content: metaTitle || site.title },
     { itemprop: 'description', content: description },
     { name: 'description', content: description },
 
-    { property: 'og:title', content: title || site.title },
-    { property: 'og:description', content: description },
+    { property: 'og:title', content: (facebookMeta && facebookMeta.title) || metaTitle || site.title },
+    { property: 'og:description', content: (facebookMeta && facebookMeta.description) || description },
     { property: 'og:type', content: date ? 'article' : 'website' },
     { property: 'og:site_name', content: site.name },
-    { property: 'og:image', content: imageUrl },
+    { property: 'og:image', content: facebookUrl },
 
     { name: 'twitter:card', content: 'summary_large_image' },
     { name: 'twitter:site', content: site.name },
-    { name: 'twitter:title', content: title },
-    { name: 'twitter:description', content: description },
+    { name: 'twitter:title', content: (twitterMeta && twitterMeta.title) || metaTitle },
+    { name: 'twitter:description', content: (twitterMeta && twitterMeta.description) || description },
     { name: 'twitter:creator', content: twitter.url },
-    { name: 'twitter:image', content: imageUrl }
+    { name: 'twitter:image', content: twitterUrl }
 
   ]
 

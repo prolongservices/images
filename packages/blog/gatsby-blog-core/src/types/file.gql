@@ -38,6 +38,7 @@ type MdxArticleProxy implements Node & Article
     @link(from: "parent", on: "Mdx")
     @proxyResolver(on: "Mdx")
   draft: Boolean @proxyField(from: "parent.frontmatter.draft")
+  seo: Seo @proxyField(from: "parent.frontmatter.seo")
 }
 
 ############################################
@@ -63,6 +64,21 @@ type AuthorsJson implements Node & ArticleAuthor @dontInfer {
   title: String
   social: [SocialMedia] @normalizeSocial
   skills: [String]
+  thumbnail: ImageSharp
+    @fileByRelativePath
+    @reduce(to: "id")
+    @link(by: "parent.id")
+}
+
+type SeoJson implements Node & Seo {
+  slug: String! @proxyField(from: "parent.frontmatter.seo.slug")
+  facebook: Meta
+  twitter: Meta
+}
+
+type MetaJson implements Node & Meta {
+  title: String!
+  description: String!
   thumbnail: ImageSharp
     @fileByRelativePath
     @reduce(to: "id")

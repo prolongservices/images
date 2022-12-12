@@ -23,6 +23,7 @@ interface Article implements Node {
   thumbnail: ImageAsset
   tableOfContents(maxDepth: Int = 6): JSON
   draft: Boolean
+  seo: Seo
 }
 
 ############################################
@@ -66,4 +67,20 @@ type ArticleTag implements Node {
   id: ID!
   name: String!
   slug: String! @makeSlug
+}
+
+############################################
+## SEO
+############################################
+
+interface Seo {
+  slug: String
+  facebook: Meta
+  twitter: Meta
+}
+
+interface Meta {
+  title: String
+  description: String
+  thumbnail: ImageAsset
 }
