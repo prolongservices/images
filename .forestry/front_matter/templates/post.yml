@@ -68,6 +68,10 @@ fields:
       file: 
       path: 
   label: Cat
+- name: new_tags
+  type: tag_list
+  default: []
+  label: New Tags
 pages:
 - site/content/posts/10-most-beautiful-good-night-images-from-around-the-world.mdx
 - site/content/posts/15-best-good-night-images-to-wish-team-and-colleagues.mdx
