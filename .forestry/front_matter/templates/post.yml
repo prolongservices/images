@@ -8,9 +8,6 @@ fields:
 - type: text
   name: category
   label: Category
-- type: text
-  name: author
-  label: Author
 - type: list
   name: tags
   label: Tags
@@ -20,17 +17,43 @@ fields:
 - type: file
   name: thumbnail
   label: Thumbnail
-- name: description
-  type: textarea
-  default: ''
+- name: author
+  type: list
   config:
-    required: true
-    wysiwyg: false
-    schema:
-      format: markdown
-    min: 30
-    max: 160
-  label: Description
+    use_select: true
+    min: 
+    max: 
+    source:
+      type: simple
+  label: Author
+- name: seo
+  type: field_group
+  config: {}
+  fields:
+  - name: metaTitle
+    type: text
+    config:
+      required: false
+      max: 60
+    label: Meta Title
+  - name: description
+    type: textarea
+    default: ''
+    config:
+      required: true
+      wysiwyg: false
+      schema:
+        format: markdown
+      min: 20
+      max: 160
+    label: Meta Description
+  - name: metaSlug
+    type: text
+    config:
+      required: false
+      max: 75
+    label: Slug
+  label: SEO
 pages:
 - site/content/posts/10-most-beautiful-good-night-images-from-around-the-world.mdx
 - site/content/posts/15-best-good-night-images-to-wish-team-and-colleagues.mdx
