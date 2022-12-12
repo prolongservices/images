@@ -1,4 +1,5 @@
 const urljoin = require('url-join')
+require('dotenv').config()
 module.exports = {
   flags: {
     DEV_SSR: false
@@ -43,7 +44,8 @@ module.exports = {
 
         services: {
           algolia: true,
-          facebookComment: true
+          facebookComment: true,
+          mailchimp: true
         }
 
       }
@@ -61,6 +63,12 @@ module.exports = {
         gtagConfig: {
           send_page_view: true, // Explicitly set to true
         },
+      }
+    },
+    {
+      resolve: 'gatsby-plugin-mailchimp',
+      options: {
+        endpoint: process.env.MAILCHIMP_END_POINT
       }
     },
     {
@@ -204,16 +212,8 @@ module.exports = {
         title: 'Legal Stuff',
         items: [
           {
-            name: 'Privacy Notice',
-            slug: '/'
-          },
-          {
-            name: 'Cookie Policy',
-            slug: '/'
-          },
-          {
-            name: 'Terms Of Use',
-            slug: '/'
+            name: 'Privacy Policy',
+            slug: '/privacy-policy'
           }
         ]
       }
