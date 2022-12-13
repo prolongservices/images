@@ -19,6 +19,8 @@ export const pageQuery = graphql`
     post: article(id: { eq: $id }) {
       ...ArticleInformation
       ...ArticleThumbnailRegular
+      ...ArticleThumbnailFacebook
+      ...ArticleThumbnailTwitter
     }
 
     # Related posts based on tags and category

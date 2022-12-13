@@ -121,4 +121,115 @@ export const query = graphql`
       }
     }
   }
+  fragment ArticleThumbnailFacebook on Article {
+    seo {
+      facebook {
+        thumbnail {
+          __typename
+          ... on ImageSharp {
+            ImageSharp_vertical: gatsbyImageData(
+              width: 380
+              height: 290
+              transformOptions: { cropFocus: CENTER }
+              outputPixelDensities: [0.5, 1]
+              quality: $imageQuality
+            )
+            ImageSharp_hero: gatsbyImageData(
+              width: 1600
+              height: 650
+              transformOptions: { cropFocus: CENTER }
+              outputPixelDensities: [0.5, 1]
+              quality: $imageQuality
+            )
+          }
+          ... on ContentfulAsset {
+            ContentfulAsset_vertical: gatsbyImageData(
+              width: 380
+              height: 290
+              cropFocus: CENTER
+              formats: [JPG, WEBP]
+              quality: $imageQuality
+              resizingBehavior: THUMB
+            )
+            ContentfulAsset_hero: gatsbyImageData(
+              width: 1600
+              height: 650
+              formats: [JPG, WEBP]
+              quality: $imageQuality
+              resizingBehavior: THUMB
+            )
+          }
+          ... on SanityImageAsset {
+            SanityImageAsset_vertical: gatsbyImageData(
+              width: 380
+              height: 290
+              outputPixelDensities: [0.5, 1]
+            )
+            SanityImageAsset_hero: gatsbyImageData(
+              width: 1600
+              height: 650
+              outputPixelDensities: [0.5, 1]
+            )
+          }
+        }
+      }
+    }
+    
+  }
+
+  fragment ArticleThumbnailTwitter on Article {
+    seo {
+      twitter {
+        thumbnail {
+          __typename
+          ... on ImageSharp {
+            ImageSharp_vertical: gatsbyImageData(
+              width: 380
+              height: 290
+              transformOptions: { cropFocus: CENTER }
+              outputPixelDensities: [0.5, 1]
+              quality: $imageQuality
+            )
+            ImageSharp_hero: gatsbyImageData(
+              width: 1600
+              height: 650
+              transformOptions: { cropFocus: CENTER }
+              outputPixelDensities: [0.5, 1]
+              quality: $imageQuality
+            )
+          }
+          ... on ContentfulAsset {
+            ContentfulAsset_vertical: gatsbyImageData(
+              width: 380
+              height: 290
+              cropFocus: CENTER
+              formats: [JPG, WEBP]
+              quality: $imageQuality
+              resizingBehavior: THUMB
+            )
+            ContentfulAsset_hero: gatsbyImageData(
+              width: 1600
+              height: 650
+              formats: [JPG, WEBP]
+              quality: $imageQuality
+              resizingBehavior: THUMB
+            )
+          }
+          ... on SanityImageAsset {
+            SanityImageAsset_vertical: gatsbyImageData(
+              width: 380
+              height: 290
+              outputPixelDensities: [0.5, 1]
+            )
+            SanityImageAsset_hero: gatsbyImageData(
+              width: 1600
+              height: 650
+              outputPixelDensities: [0.5, 1]
+            )
+          }
+        }
+      }
+    }
+    
+  }
 `

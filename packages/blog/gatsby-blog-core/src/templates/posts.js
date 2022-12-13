@@ -48,6 +48,8 @@ export const pageQuery = graphql`
         nodes {
           ...ArticlePreview
           ...ArticleThumbnailRegular
+          ...ArticleThumbnailFacebook
+          ...ArticleThumbnailTwitter
         }
       }
     }
