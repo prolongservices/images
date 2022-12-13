@@ -53,6 +53,17 @@ fields:
   type: field_group
   config: {}
   fields:
+  - name: description
+    type: textarea
+    default: ''
+    config:
+      required: true
+      wysiwyg: false
+      schema:
+        format: markdown
+      min: 20
+      max: 160
+    label: Description
   - name: slug
     type: text
     config:
