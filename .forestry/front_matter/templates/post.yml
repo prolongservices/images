@@ -53,29 +53,66 @@ fields:
   type: field_group
   config: {}
   fields:
-  - name: title
-    type: text
-    config:
-      required: false
-      max: 60
-    label: Meta Title
-  - name: description
-    type: textarea
-    default: ''
-    config:
-      required: true
-      wysiwyg: false
-      schema:
-        format: markdown
-      min: 20
-      max: 160
-    label: Meta Description
   - name: slug
     type: text
     config:
       required: false
       max: 75
     label: Slug
+  - name: facebook
+    type: field_group
+    config: {}
+    fields:
+    - name: title
+      type: text
+      config:
+        required: false
+        max: 60
+      label: Title
+    - name: description
+      type: textarea
+      default: ''
+      config:
+        required: false
+        wysiwyg: false
+        schema:
+          format: markdown
+        min: 20
+        max: 160
+      label: Description
+    - name: thumbnail
+      type: file
+      config:
+        maxSize: 64
+      label: Thumbnail
+    label: Facebook
+  - name: twitter
+    type: field_group
+    config: {}
+    fields:
+    - name: title
+      type: text
+      config:
+        required: false
+        max: 60
+      label: Title
+    - name: description
+      type: textarea
+      default: ''
+      config:
+        required: false
+        wysiwyg: false
+        schema:
+          format: markdown
+        min: 20
+        max: 160
+      label: Description
+    - name: thumbnail
+      type: file
+      config:
+        maxSize: 64
+      label: Thumbnail
+    label: Twitter
   label: SEO
 - name: keywords
   type: tag_list
