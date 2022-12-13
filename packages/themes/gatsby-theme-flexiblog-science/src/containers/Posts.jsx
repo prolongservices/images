@@ -12,13 +12,13 @@ const Posts = ({
   data: { posts = {}, featuredPosts = {}, recentPosts = {} },
   ...props
 }) => {
-  const { pageContext: { services = {} } = {} } = props
+  const { pageContext: { services = {}, siteUrl } = {}, path } = props
   const categories = useBlogCategories()
   const sliderRef = React.useRef()
-  //console.log(posts)
+  //console.log(path === '/')
   return (
     <Layout {...props}>
-      <Seo title='Home' />
+      <Seo title='Home' siteUrl={siteUrl} isHome={ path === '/' } />
       <Hero
         pt={4}
         pb={5}

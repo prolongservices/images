@@ -71,7 +71,8 @@ type AuthorsJson implements Node & ArticleAuthor @dontInfer {
 }
 
 type SeoJson implements Node & Seo {
-  slug: String @proxyField(from: "parent.frontmatter.seo.slug")
+  slug: String
+  description: String
   facebook: MetaJson
   twitter: MetaJson
 }

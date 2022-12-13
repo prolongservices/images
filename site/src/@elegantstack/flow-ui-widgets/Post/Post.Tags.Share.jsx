@@ -1,6 +1,6 @@
 import React from 'react'
 import { Box, Divider } from 'theme-ui'
-import { PostTags } from '@widgets/Post'
+import {PostShare, PostTags} from '@widgets/Post'
 
 
 export const PostTagsShare = props => (
@@ -8,7 +8,7 @@ export const PostTagsShare = props => (
     <Divider />
     <PostTags {...props} />
     <Divider />
-    {/* <PostShare {...props} /> */}
-    <div class="sharethis-inline-share-buttons"></div>
+     <PostShare {...props} />
+    {/*<div class="sharethis-inline-share-buttons"></div>*/}
   </Box>
 )

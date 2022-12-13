@@ -32,7 +32,7 @@ const Post = ({
 
   return (
     <Layout {...props}>
-      <Seo {...post} siteUrl={siteUrl} />
+      <Seo {...post} siteUrl={siteUrl} isHome={false} />
       <Divider />
       <Stack effectProps={{ effect: 'fadeInDown' }}>
         <PostHead {...post} />

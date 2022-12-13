@@ -19,6 +19,7 @@ export const query = graphql`
     }
     seo {
       slug
+      description
       facebook {
         title
         description

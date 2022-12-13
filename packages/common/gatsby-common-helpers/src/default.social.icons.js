@@ -4,9 +4,14 @@ import {
   FaInstagram,
   FaLinkedinIn,
   FaFacebook,
+  FaFacebookMessenger,
   FaEnvelope,
   FaLink,
-  FaGlobe
+  FaGlobe,
+  FaPinterest,
+  FaGetPocket,
+  FaReddit,
+  FaWhatsappSquare, FaTelegram,
 } from 'react-icons/fa'
 
 export default {
@@ -33,6 +38,30 @@ export default {
   facebook: {
     Icon: FaFacebook,
     color: '#4267B2'
+  },
+  facebookMessenger: {
+    Icon: FaFacebookMessenger,
+    color: '#006AFF'
+  },
+  pinterest: {
+    Icon: FaPinterest,
+    color: '#e60023'
+  },
+  pocket: {
+    Icon: FaGetPocket,
+    color: '#e7132f'
+  },
+  reddit: {
+    Icon: FaReddit,
+    color: '#ff4500'
+  },
+  telegram: {
+    Icon: FaTelegram,
+    color: '#0088cc'
+  },
+  whatsapp: {
+    Icon: FaWhatsappSquare,
+    color: '#25d366'
   },
   email: {
     Icon: FaEnvelope,

@@ -45,7 +45,6 @@ module.exports = async (
     Array.from({ length: pageInfo.pageCount }, (_, i) => {
       let path = i === 0 ? slug : urljoin(slug, pagingParam, `${i + 1}`)
       path = normalizeSlug(path)
-
       createPage({
         path,
         component: template,

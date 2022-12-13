@@ -75,6 +75,7 @@ type ArticleTag implements Node {
 
 interface Seo {
   slug: String
+  description: String
   facebook: Meta
   twitter: Meta
 }

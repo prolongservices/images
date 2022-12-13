@@ -20,14 +20,17 @@ const Seo = ({
   thumbnail,
   siteUrl,
   locale,
-  seo
+  seo,
+  slug,
+  isHome = false
 }) => {
+  const postUrl = siteUrl + slug
   const site = useSiteMetadata()
   const { logo } = useStaticQuery(logoQuery)
   const social = (author && author.social) || site.social || []
   const twitter =
     social.find(s => s.name && s.name.toLowerCase() === 'twitter') || {}
-  //console.log(description)
+  console.log(postUrl)
   description = (seo && seo.description) || excerpt || site.description
   const facebookMeta = (seo && seo.facebook)
   const twitterMeta = (seo && seo.twitter)
@@ -118,18 +121,76 @@ const Seo = ({
 
   const scripts = []
 
-  // Article
+  //Home Page
+  if (isHome) {
+    const homeJsonLd = helmetJsonLdProp({
+      '@context': 'https://schema.org',
+      '@graph': [
+        {
+          "@type": "Person",
+          "@id": siteUrl + "/#person",
+          "name": 'Pawneshwer Gupta'
+        },
+        {
+          "@type": "WebSite",
+          "@id": siteUrl + "/#website",
+          "url": siteUrl,
+          "name": site.name,
+          "publisher": {
+            "@id": siteUrl + "/#person"
+          },
+          "inLanguage": "en-US",
+          "potentialAction": {
+            "@type": "SearchAction",
+            "target": siteUrl + "/?s={search_term_string}",
+            "query-input": "required name=search_term_string"
+          }
+        },
+        {
+          "@type": "CollectionPage",
+          "@id": siteUrl + "/#webpage",
+          "url": siteUrl,
+          "name": site.name + ' | ' + site.title,
+          "about": {
+            "@id": siteUrl + "/#person"
+          },
+          "isPartOf": {
+            "@id": siteUrl + "/#website"
+          },
+          "inLanguage": "en-US"
+        }
+      ],
+    })
+    scripts.push(homeJsonLd)
+  }
+
+  // BlogPosting
   if (title && author) {
     const articleJsonLd = helmetJsonLdProp({
       '@context': 'https://schema.org',
-      '@type': 'Article',
+      '@type': 'BlogPosting',
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": postUrl
+      },
       headline: title,
+      description: description,
       image: imageUrl,
+      articleSection: (category && category.name) || 'Uncategorized',
       datePublished: date,
+      dateModified: date,
       author: {
         '@type': 'Person',
         name: author.name,
         url: author.slug
+      },
+      publisher: {
+        "@type": "Organization",
+        "name": "Prolong Services",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://imagesle.com/Prolong-Services.png"
+        }
       }
     })
     scripts.push(articleJsonLd)

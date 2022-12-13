@@ -25,7 +25,7 @@ export default function HTML(props) {
     />
     {props.postBodyComponents}
     <div id="url">{url}</div>
-    <script type='text/javascript' src='https://platform-api.sharethis.com/js/sharethis.js#property=6390e2894c319700156560d0&product=inline-share-buttons' async='async'></script>
+    {/*<script type='text/javascript' src='https://platform-api.sharethis.com/js/sharethis.js#property=6390e2894c319700156560d0&product=inline-share-buttons' async='async'></script>*/}
     
     </body>
     </html>

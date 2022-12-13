@@ -30,18 +30,6 @@ module.exports = async (
             }
             seo {
               slug
-              facebook {
-                title
-                description
-                thumbnail {
-                }
-              }
-              twitter {
-                title
-                description
-                thumbnail {
-                }
-              }
             }
           }
         }
@@ -55,9 +43,8 @@ module.exports = async (
 
   const { allArticle } = result.data
   const posts = allArticle.edges
-
   posts.forEach(({ node }, index) => {
-    const { id, slug, category, tags, link } = node
+    const { id, slug, category, tags, link, seo } = node
 
     if (link) return //skip creating pages for nodes linking to external sites
 
@@ -70,6 +57,7 @@ module.exports = async (
     const hasTags = tagsIds.length > 0
 
     createPage({
+      //path: (seo && seo.slug) || slug, //its creating detail page with custom slug but default slug is being used in homepage and category reference
       path: slug,
       component: template,
       context: {
