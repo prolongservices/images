@@ -106,7 +106,9 @@ module.exports = {
                     frontmatter {
                       date
                       title
-                      description
+                      seo {
+                        description
+                      }
                     }
                   }
                 }
@@ -120,7 +122,7 @@ module.exports = {
                   date: edge.node.frontmatter.date,
                   url: urljoin(site.siteMetadata.siteUrl, edge.node.slug),
                   html: edge.node.html,
-                  description: edge.node.frontmatter.description ? edge.node.frontmatter.description : edge.node.excerpt
+                  description: edge.node.frontmatter.seo.description ? edge.node.frontmatter.seo.description : edge.node.excerpt
                 }
               })
             },
