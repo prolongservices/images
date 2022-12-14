@@ -23,6 +23,7 @@ fields:
     - Krishna Images
     - Love Images
     - Uncategorized
+    - Bible Images
     source:
       type: simple
       section: ''
