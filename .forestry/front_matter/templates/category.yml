@@ -21,6 +21,6 @@ fields:
     required: false
     color_format: Hex
 pages:
-- site/content/categories/attitude-shayari-image.json
 - site/content/categories/bible-images.json
 - site/content/categories/khatu-shyam-images.json
+- site/content/categories/shayari-image.json
