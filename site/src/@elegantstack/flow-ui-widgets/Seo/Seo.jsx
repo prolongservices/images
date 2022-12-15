@@ -24,7 +24,8 @@ const Seo = ({
   slug,
   isHome = false
 }) => {
-  const postUrl = siteUrl + slug
+
+  const postUrl = siteUrl + (slug || '')
   const site = useSiteMetadata()
   const { logo } = useStaticQuery(logoQuery)
   const social = (author && author.social) || site.social || []
@@ -39,10 +40,11 @@ const Seo = ({
   const twitterThumbnail = (seo && seo.twitter && seo.twitter.thumbnail)
 
   //console.log('pawn from SEO clone')
+  //console.log(logo.nodes[0])
 
   let imageUrl, facebookUrl, twitterUrl;
   if (thumbnail == null) {
-    imageUrl = logo.nodes[0].publicURL
+    imageUrl = siteUrl + logo.nodes[0].publicURL
   } else {
     const imageSrc = getSrc(getImageVariant(thumbnail, 'hero'))
     imageUrl =
@@ -51,7 +53,7 @@ const Seo = ({
   }
 
   if (facebookThumbnail == null) {
-    facebookUrl = logo.nodes[0].publicURL
+    facebookUrl = siteUrl + logo.nodes[0].publicURL
   }
   else {
     const imageSrc = getSrc(getImageVariant(facebookThumbnail, 'hero'))
@@ -60,7 +62,7 @@ const Seo = ({
       (imageSrc.startsWith('//') ? imageSrc : siteUrl && `${siteUrl}${imageSrc}`)
   }
   if (twitterThumbnail == null) {
-    twitterUrl = logo.nodes[0].publicURL
+    twitterUrl = siteUrl + logo.nodes[0].publicURL
   }
   else {
     const imageSrc = getSrc(getImageVariant(twitterThumbnail, 'hero'))
@@ -70,7 +72,7 @@ const Seo = ({
   }
 
 
-  //console.log(imageUrl)
+  console.log(imageUrl)
   /**
    * Meta Tags
    */
@@ -85,6 +87,7 @@ const Seo = ({
     { property: 'og:type', content: date ? 'article' : 'website' },
     { property: 'og:site_name', content: site.name },
     { property: 'og:image', content: facebookUrl },
+    { property: 'og:url', content: postUrl },
 
     { name: 'twitter:card', content: 'summary_large_image' },
     { name: 'twitter:site', content: site.name },
@@ -144,7 +147,11 @@ const Seo = ({
             "@type": "SearchAction",
             "target": siteUrl + "/?s={search_term_string}",
             "query-input": "required name=search_term_string"
-          }
+          },
+          "sameAs": [
+            "https://twitter.com/ImagesLe2",
+            "https://www.instagram.com/images_le/"
+          ],
         },
         {
           "@type": "CollectionPage",
