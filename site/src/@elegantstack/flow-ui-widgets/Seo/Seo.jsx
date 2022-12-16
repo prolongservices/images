@@ -123,6 +123,7 @@ const Seo = ({
    */
 
   const scripts = []
+  const styles = []
 
   //Home Page
   if (isHome) {
@@ -201,6 +202,8 @@ const Seo = ({
       }
     })
     scripts.push(articleJsonLd)
+
+    
   }
 
   // Breadcrumb
@@ -235,6 +238,7 @@ const Seo = ({
       titleTemplate={`%s | ${site.title}`}
       meta={metaTags}
       script={scripts}
+      style={styles}
     >
       {children}
     </Helmet>
