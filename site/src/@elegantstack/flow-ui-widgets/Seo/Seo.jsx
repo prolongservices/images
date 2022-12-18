@@ -151,7 +151,8 @@ const Seo = ({
           },
           "sameAs": [
             "https://twitter.com/ImagesLe2",
-            "https://www.instagram.com/images_le/"
+            "https://www.instagram.com/images_le/",
+            "https://www.facebook.com/imagesle.official"
           ],
         },
         {
@@ -203,7 +204,11 @@ const Seo = ({
     })
     scripts.push(articleJsonLd)
 
-    
+    scripts.push({"src": "https://imagesle.com/light-box/tobii.min.js", "type": "text/javascript"})
+    styles.push({
+      "rel": "stylesheet",
+      "href": "https://imagesle.com/light-box/tobii.min.css"
+    })
   }
 
   // Breadcrumb
@@ -238,7 +243,7 @@ const Seo = ({
       titleTemplate={`%s | ${site.title}`}
       meta={metaTags}
       script={scripts}
-      style={styles}
+      link={styles}
     >
       {children}
     </Helmet>
