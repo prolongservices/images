@@ -171,13 +171,14 @@ module.exports = {
         url: 'https://www.reddit.com/user/imagesle_'
       },
       {
-        name: 'Twitter',
-        url: 'https://twitter.com/ProlongServices'
+        name: 'Pinterest',
+        url: 'https://pinterest.com/imagesle/'
       },
       {
         name: 'Instagram',
         url: 'https://www.instagram.com/images_le/'
-      }
+      },
+      
     ],
 
     //Header Menu Items

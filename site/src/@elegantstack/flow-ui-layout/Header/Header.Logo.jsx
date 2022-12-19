@@ -12,8 +12,8 @@ export const HeaderLogo = ({ ...props }) => {
   const isDark = colorMode === `dark`
 
   return isDark ? (
-      <Logo image={logoDark} title={title} alt={title} {...props} />
+      <Logo image={logoDark} title={title} alt={title} width={296} height={70} {...props} />
   ) : (
-      <Logo image={logoLight} title={title} alt={title} {...props} />
+      <Logo image={logoLight} title={title} alt={title} width={296} height={70} {...props} />
   )
 }

@@ -152,7 +152,10 @@ const Seo = ({
           "sameAs": [
             "https://twitter.com/ImagesLe2",
             "https://www.instagram.com/images_le/",
-            "https://www.facebook.com/imagesle.official"
+            "https://www.facebook.com/imagesle.official",
+            "https://www.reddit.com/user/imagesle_",
+            "https://pinterest.com/imagesle/",
+            "https://www.tumblr.com/imagesle"
           ],
         },
         {
