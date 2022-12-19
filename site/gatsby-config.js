@@ -163,8 +163,12 @@ module.exports = {
     //Site Social Media Links
     social: [
       {
-        name: 'Github',
-        url: 'https://github.com/prolongservices'
+        name: 'Facebook',
+        url: 'https://www.facebook.com/imagesle.official'
+      },
+      {
+        name: 'Reddit',
+        url: 'https://www.reddit.com/user/imagesle_'
       },
       {
         name: 'Twitter',
@@ -217,6 +221,10 @@ module.exports = {
           {
             name: 'Privacy Policy',
             slug: '/privacy-policy'
+          },
+          {
+            name: 'Terms of Use',
+            slug: '/terms-of-use'
           }
         ]
       }

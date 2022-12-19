@@ -20,8 +20,8 @@ export const FooterLogo = () => (
     <Box sx={styles.copyright}>
       Prolong Services © {new Date().getFullYear()}, All Rights Reserved.
     </Box>
-    <Box>
+    {/* <Box>
       <PoweredByGatsby />
-    </Box>
+    </Box> */}
   </>
 )
