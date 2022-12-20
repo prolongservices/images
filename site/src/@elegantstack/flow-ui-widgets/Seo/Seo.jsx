@@ -155,7 +155,8 @@ const Seo = ({
             "https://www.facebook.com/imagesle.official",
             "https://www.reddit.com/user/imagesle_",
             "https://pinterest.com/imagesle/",
-            "https://www.tumblr.com/imagesle"
+            "https://www.tumblr.com/imagesle",
+            "https://www.linkedin.com/company/images-le"
           ],
         },
         {
