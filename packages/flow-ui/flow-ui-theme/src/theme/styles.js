@@ -132,7 +132,8 @@ export default {
     overflow: `hidden`,
     backgroundColor: `contentBg`,
     borderRadius: 'default',
-    margin: 0
+    margin: 0,
+    marginBottom: 16,
   },
   figcaption: {
     textAlign: `center`,
