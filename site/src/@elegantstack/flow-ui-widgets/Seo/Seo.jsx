@@ -118,15 +118,23 @@ const Seo = ({
     metaTags.push(meta)
   }
 
+  
+
   /**
    * Structured Data (JSON-LD)
    */
 
   const scripts = []
-  const styles = []
+  const links = []
 
+  links.push({ rel: 'profile', href: 'http://gmpg.org/xfn/11'})
   //Home Page
   if (isHome) {
+    metaTags.push({ name: 'robots', content: 'follow, index'})
+    links.push({
+      "rel": "canonical",
+      "href": siteUrl + '/'
+    })
     const homeJsonLd = helmetJsonLdProp({
       '@context': 'https://schema.org',
       '@graph': [
@@ -179,6 +187,11 @@ const Seo = ({
 
   // BlogPosting
   if (title && author) {
+    metaTags.push({ name: 'robots', content: 'follow, index, max-snippet:-1, max-video-preview:-1, max-image-preview:large'})
+    links.push({
+      "rel": "canonical",
+      "href": postUrl
+    })
     const articleJsonLd = helmetJsonLdProp({
       '@context': 'https://schema.org',
       '@type': 'BlogPosting',
@@ -213,7 +226,6 @@ const Seo = ({
           alternateName: site.title,
           publisher: {
             '@type': 'Person',
-            "@type": "Organization",
             "@id": siteUrl + "/#person",
             name: author.name,
           },
@@ -272,7 +284,7 @@ const Seo = ({
     scripts.push(articleJsonLd)
 
     scripts.push({"src": "https://imagesle.com/light-box/tobii.min.js", "type": "text/javascript"})
-    styles.push({
+    links.push({
       "rel": "stylesheet",
       "href": "https://imagesle.com/light-box/tobii.min.css"
     })
@@ -287,7 +299,7 @@ const Seo = ({
       titleTemplate={`%s | ${site.title}`}
       meta={metaTags}
       script={scripts}
-      link={styles}
+      link={links}
     >
       {children}
     </Helmet>
