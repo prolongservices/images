@@ -182,27 +182,90 @@ const Seo = ({
     const articleJsonLd = helmetJsonLdProp({
       '@context': 'https://schema.org',
       '@type': 'BlogPosting',
-      "mainEntityOfPage": {
-        "@type": "WebPage",
-        "@id": postUrl
-      },
       headline: title,
       description: description,
-      image: imageUrl,
+      name: title,
+      "@id": postUrl + "#richSnippet",
+      image: {
+        "@type": "ImageObject",
+        id: imageUrl,
+        url: imageUrl,
+        width: 1600,
+        height: 500,
+        inLanguage: "en-US",
+      },
       articleSection: (category && category.name) || 'Uncategorized',
       datePublished: date,
       dateModified: date,
+      inLanguage: "en-US",
+      mainEntityOfPage: {
+        "@type": "WebPage",
+        "@id": postUrl + "#webpage",
+        url: postUrl,
+        name: title,
+        datePublished: date,
+        dateModified: date,
+        isPartOf: {
+          '@type': 'Website',
+          "@id": siteUrl + "/#website",
+          url: siteUrl,
+          name: site.name,
+          alternateName: site.title,
+          publisher: {
+            '@type': 'Person',
+            "@type": "Organization",
+            "@id": siteUrl + "/#person",
+            name: author.name,
+          },
+          inLanguage: "en-US",
+        },
+        primaryImageOfPage: {
+          "@type": "ImageObject",
+          id: imageUrl,
+          url: imageUrl,
+          width: 1600,
+          height: 500,
+          inLanguage: "en-US",
+        },
+        inLanguage: "en-US",
+        breadcrumb: {
+          '@context': 'https://schema.org',
+          '@type': 'BreadcrumbList',
+          "@id": postUrl + "#breadcrumb",
+          itemListElement: [
+            {
+              '@type': 'ListItem',
+              position: 1,
+              item: {
+                '@type': 'Thing',
+                "@id": siteUrl,
+                name: 'Home',
+              }
+            },
+            {
+              '@type': 'ListItem',
+              position: 2,
+              item: {
+                '@type': 'Thing',
+                "@id": `${siteUrl}${category.slug}`,
+                name: category.name,
+              }
+            }
+          ]
+        }
+      },
       author: {
         '@type': 'Person',
         name: author.name,
-        url: author.slug
+        "@id": author.slug,
+        url: author.slug,
       },
       publisher: {
         "@type": "Organization",
-        "name": "Prolong Services",
-        "logo": {
+        name: "Prolong Services",
+        logo: {
           "@type": "ImageObject",
-          "url": "https://imagesle.com/Prolong-Services.png"
+          url: "https://imagesle.com/Prolong-Services.png"
         }
       }
     })
@@ -213,29 +276,6 @@ const Seo = ({
       "rel": "stylesheet",
       "href": "https://imagesle.com/light-box/tobii.min.css"
     })
-  }
-
-  // Breadcrumb
-  if (title && category) {
-    const breadcrumbJsonLd = helmetJsonLdProp({
-      '@context': 'https://schema.org',
-      '@type': 'BreadcrumbList',
-      itemListElement: [
-        {
-          '@type': 'ListItem',
-          position: 1,
-          name: site.name,
-          item: siteUrl
-        },
-        {
-          '@type': 'ListItem',
-          position: 2,
-          name: category.name,
-          item: `${siteUrl}${category.slug}`
-        }
-      ]
-    })
-    scripts.push(breadcrumbJsonLd)
   }
 
   return (
