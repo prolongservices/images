@@ -22,4 +22,5 @@ fields:
     color_format: Hex
 pages:
 - site/content/categories/bible-images.json
+- site/content/categories/christmas-images.json
 - site/content/categories/shayari-image.json
