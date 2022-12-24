@@ -82,7 +82,7 @@ fields:
       type: text
       config:
         required: false
-        max: 60
+        max: 90
       label: Title
     - name: description
       type: textarea
@@ -109,7 +109,7 @@ fields:
       type: text
       config:
         required: false
-        max: 60
+        max: 90
       label: Title
     - name: description
       type: textarea
