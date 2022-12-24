@@ -53,6 +53,12 @@ fields:
       file: 
       path: 
   label: Author
+- name: slug
+  type: text
+  config:
+    required: false
+    max: 75
+  label: Slug
 - name: seo
   type: field_group
   config: {}
@@ -68,12 +74,6 @@ fields:
       min: 20
       max: 160
     label: Description
-  - name: slug
-    type: text
-    config:
-      required: false
-      max: 75
-    label: Slug
   - name: facebook
     type: field_group
     config: {}
