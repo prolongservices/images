@@ -19,7 +19,7 @@ module.exports = {
       options: {
         name: `photos`,
         path: `${__dirname}/content/posts/img`
-       
+
       },
     },
     {
@@ -35,7 +35,7 @@ module.exports = {
       }
     },
     {
-      
+
       resolve: '@elegantstack/gatsby-theme-flexiblog-science',
       options: {
         // Add theme options here. Check documentation for available options.
@@ -50,7 +50,7 @@ module.exports = {
 
       }
     },
-    
+
     {
       resolve: `gatsby-plugin-google-gtag`,
       options: {
@@ -146,8 +146,84 @@ module.exports = {
         output: '/',
         resolveSiteUrl: () => 'https://imagesle.com'
       }
+    },
+    {
+      resolve: `gatsby-plugin-advanced-sitemap`,
+      options: {
+        query: `
+        {
+          allArticle(
+            filter: {draft: {ne: true}, private: {ne: true}, protected: {ne: true}}
+          ) {
+            edges {
+              node {
+                slug
+                id
+                date
+              }
+            }
+          }
+          allArticleAuthor {
+            edges {
+              node {
+                slug
+                id
+                name
+              }
+            }
+          }
+          allArticleCategory {
+            edges {
+              node {
+                slug
+                name
+                id
+              }
+            }
+          }
+          allArticleTag {
+            edges {
+              node {
+                slug
+                id
+                name
+              }
+            }
+          }
+          
+        }
+        
+        
+        `,
+        mapping: {
+          allArticle: {
+            sitemap: `posts`,
+            serializer: (edges) => {
+              const siteMapEntries = [];
+              edges.forEach((edge) => {
+                edge.node.updated_at = edge.node.date
+                
+                siteMapEntries.push(edge);
+              });
+              return siteMapEntries;
+
+            }
+          },
+          allArticleTag: {
+            sitemap: `tags`,
+          },
+          allArticleAuthor: {
+            sitemap: `authors`,
+          },
+          allArticleCategory: {
+            sitemap: `categories`,
+          },
+        },
+        output: "/sitemap.xml",
+        createLinkInHead: true,
+        addUncaughtPages: true,
+      }
     }
-    
   ],
   siteMetadata: {
     //General Site Metadata
@@ -178,7 +254,7 @@ module.exports = {
         name: 'Instagram',
         url: 'https://www.instagram.com/images_le/'
       },
-      
+
     ],
 
     //Header Menu Items
