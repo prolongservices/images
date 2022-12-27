@@ -107,6 +107,7 @@ module.exports = {
                     frontmatter {
                       date
                       title
+                      slug
                       seo {
                         description
                       }
@@ -121,7 +122,7 @@ module.exports = {
                 return {
                   title: edge.node.frontmatter.title,
                   date: edge.node.frontmatter.date,
-                  url: urljoin(site.siteMetadata.siteUrl, edge.node.slug),
+                  url: urljoin(site.siteMetadata.siteUrl, (edge.node.frontmatter.slug || edge.node.slug)),
                   html: edge.node.html,
                   description: edge.node.frontmatter.seo.description ? edge.node.frontmatter.seo.description : edge.node.excerpt
                 }
