@@ -23,5 +23,6 @@ fields:
 pages:
 - site/content/categories/bible-images.json
 - site/content/categories/christmas-images.json
+- site/content/categories/happy-lohri-images.json
 - site/content/categories/happy-new-year.json
 - site/content/categories/shayari-image.json
