@@ -53,7 +53,7 @@ const Seo = ({
   }
 
   if (facebookThumbnail == null) {
-    facebookUrl = siteUrl + logo.nodes[0].publicURL
+    facebookUrl = imageUrl
   }
   else {
     const imageSrc = getSrc(getImageVariant(facebookThumbnail, 'hero'))
@@ -62,7 +62,7 @@ const Seo = ({
       (imageSrc.startsWith('//') ? imageSrc : siteUrl && `${siteUrl}${imageSrc}`)
   }
   if (twitterThumbnail == null) {
-    twitterUrl = siteUrl + logo.nodes[0].publicURL
+    twitterUrl = imageUrl
   }
   else {
     const imageSrc = getSrc(getImageVariant(twitterThumbnail, 'hero'))
